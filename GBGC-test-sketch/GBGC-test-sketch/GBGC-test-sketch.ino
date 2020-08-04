@@ -63,15 +63,40 @@ void setup() {
   pinMode(43,OUTPUT);   // FET4 Drive
   pinMode(41,OUTPUT);   // FET3 OE3
   pinMode(39,OUTPUT);   // FET3 Drive
+
+  
+  // Enabling 74 logic Line drivers
+  // Make MOSFET Drive Signals Active:
+  digitalWrite(51,LOW);  // Make FET2 drive output Active
+  digitalWrite(47,LOW);  // Make FET1 drive output Active
+  digitalWrite(45,LOW);  // Make FET4 drive output Active
+  digitalWrite(41,LOW);  // Make FET3 drive output Active
+  // Make Stepper Driver Output Signals Active
+  digitalWrite(13,LOW);
+  digitalWrite(12,LOW);
+  digitalWrite(35,LOW);
+  digitalWrite(37,LOW);
    
 }
 
-void loop() {
+void loop() 
+{
   // put your main code here, to run repeatedly:
-
+  toggleMOSFETS();
 }
 
 void togglePin(int pin)
 {
-  //switch pin high, delay switch pin low   
+  digitalWrite(pin,HIGH);
+  delay(500);
+  digitalWrite(pin,LOW);  
+}
+
+void toggleMOSFETS()
+{
+  // Toggle the MOSFETS
+  togglePin(53);
+  togglePin(49);
+  togglePin(43);
+  togglePin(39);
 }
