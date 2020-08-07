@@ -82,21 +82,78 @@ void setup() {
 void loop() 
 {
   // put your main code here, to run repeatedly:
-  toggleMOSFETS();
+ toggleMOSFETS();
+ // toggleDriver(5);
+ toggleDebugLEDs();
 }
 
-void togglePin(int pin)
+void togglePin(int pin, int tim)
 {
   digitalWrite(pin,HIGH);
-  delay(500);
+  delay(tim);
   digitalWrite(pin,LOW);  
 }
 
 void toggleMOSFETS()
 {
   // Toggle the MOSFETS
-  togglePin(53);
-  togglePin(49);
-  togglePin(43);
-  togglePin(39);
+  togglePin(53,1000);
+  togglePin(49,1000);
+  togglePin(43,1000);
+  togglePin(39,1000);
+}
+
+void toggleDriver(int drv)
+{
+   switch(drv)
+   {
+    case 1:
+      //
+      togglePin(11,500);
+      togglePin(10,500);
+      togglePin(9,500);
+      break;
+    case 2:
+      //
+      togglePin(8,500);
+      togglePin(7,500);
+      togglePin(6,500);
+      break;
+    case 3:
+      //
+      togglePin(5,500);
+      togglePin(4,500);
+      togglePin(3,500);
+      break;
+    case 4:
+      //
+      togglePin(2,500);
+      togglePin(23,500);
+      togglePin(25,500);
+      break;
+    case 5:
+      //
+      togglePin(27,500);
+      togglePin(29,500);
+      togglePin(31,500);
+      break;
+   }
+}
+
+void toggleDebugLEDs(){
+  togglePin(52,500);
+  togglePin(50,500);
+  togglePin(48,500);
+  togglePin(46,500);
+  togglePin(44,500);
+  togglePin(42,500);
+  togglePin(40,500);
+  togglePin(38,500);
+  togglePin(36,500);
+  togglePin(34,500);
+  togglePin(32,500);
+  togglePin(30,500
+  );
+  
+  
 }
